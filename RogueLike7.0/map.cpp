@@ -15,6 +15,19 @@ Map::Map()
 	}
 }
 
+Map::Map(std::vector<std::vector<int>> tiles)
+{
+	tiles_.resize(tiles.size() * tiles[0].size());
+	
+	for(auto y = 0; y < tiles.size(); y++)
+	{
+		for (auto x = 0; x < tiles[y].size(); x++)
+		{
+			tiles_[Pos2Index(x, y)] = static_cast<Tile>(tiles[y][x]);
+		}
+	}
+}
+
 Map::~Map() {}
 
 void Map::Print()
@@ -54,6 +67,11 @@ int Map::Pos2Index(const Position pos) const
 	return pos.y * sizeX_ + pos.x;
 }
 
+int Map::Pos2Index(const int x, const int y) const
+{
+	return y * sizeX_ + x;
+}
+
 char Map::TileToChar(const Tile tile)
 {
 	auto c = ' ';
@@ -61,12 +79,12 @@ char Map::TileToChar(const Tile tile)
 	{
 	case WALL:
 	{
-		c = 'x';
+		c = '|';
 		break;
 	}
 	case GROUND:
 	{
-		c = '-';
+		c = ' ';
 		break;
 	}
 	default:

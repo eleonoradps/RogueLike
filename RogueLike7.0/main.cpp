@@ -6,7 +6,7 @@
 
 int main()
 {
-	Map map = Map();
+	Map map = Map(level_0);
 	map.Print();
 
 	system("pause");
