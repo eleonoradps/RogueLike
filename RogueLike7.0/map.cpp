@@ -2,7 +2,7 @@
 #include <iostream>
 
 #include <random>
-#include <ctime>
+#include <time.h>
 
 Map::Map()
 { 
@@ -46,15 +46,34 @@ Map::~Map() {}
 void Map::Print()
 {
 	auto line = 1;
+	std::vector<std::string> result;
+	result.reserve(tiles_.size());
+	int index = 0;
 	for (auto& tile : tiles_)
 	{
-		std::cout << TileToChar(tile);
+		if(Pos2Index(player_->GetPosition()) == index)
+		{
+			auto c = TileToChar(Tile::PLAYER);
+			result.insert(result.end(), c.begin(), c.end());
+		}
+		else {
+			auto c = TileToChar(tile);
+			result.insert(result.end(), c.begin(), c.end());
+		}
+
+		
 		if(line % sizeX_ == 0)
 		{
-			std::cout << "\n";
+			result.push_back("\n");
 		}
-		
+
 		line++;
+		index++;
+	}
+
+	for (auto value : result)
+	{
+		std::cout << value;
 	}
 }
 
@@ -124,24 +143,30 @@ int Map::Pos2Index(const int x, const int y) const
 	return y * sizeX_ + x;
 }
 
-char Map::TileToChar(const Tile tile)
+std::vector<std::string> Map::TileToChar(const Tile tile)
 {
-	auto c = ' ';
+	std::vector<std::string> c;
 	switch (tile)
 	{
 	case WALL:
 	{
-		c = '|';
+		c.emplace_back("|");
 		break;
 	}
 	case GROUND:
 	{
-		c = ' ';
+		c.emplace_back(" ");
 		break;
 	}
+	case PLAYER:
+		c.emplace_back("\x1B[31m");
+		c.emplace_back("@");
+		c.emplace_back("\033[0m");
+		break;
+	case LENGTH: break;
 	default:
 	{
-		c = 'O';
+		c.emplace_back("X");
 	}
 	}
 

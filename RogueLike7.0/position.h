@@ -10,7 +10,6 @@ struct Position
 	{
 		std::cout << "(" << x << ", " << y << ")\n";
 	}
-
 };
 
 static Position wrong_position{ -1, -1 };

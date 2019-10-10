@@ -23,6 +23,8 @@ public:
 	Player();
 	void MoveSet();
 
+	Position GetPosition() const;
+
 private:
 	Position m_PlayerPosition{ 0, 0 };
 };

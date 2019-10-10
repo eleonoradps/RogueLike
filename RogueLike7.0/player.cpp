@@ -86,3 +86,8 @@ void Player::MoveSet()
 	//TODO afficher la nouvelle position ici
 }
 
+Position Player::GetPosition() const
+{
+	return m_PlayerPosition;
+}
+
