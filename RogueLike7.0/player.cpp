@@ -57,32 +57,45 @@ void Player::MoveSet()
 		break;
 	}
 
-	if (!move) {
+	if (!move) 
+	{
 		return;
 	}
 
 	switch (direction) {
 	case MoveDirection::DOWN: 
-		m_PlayerPosition.y += 1;//TODO
+		m_PlayerPosition.y += 1;
 		break;
 	
 	case MoveDirection::UP: 
-		m_PlayerPosition.y -= 1; //TODO
+		m_PlayerPosition.y -= 1;
 		break;
 	
 	case MoveDirection::LEFT: 
-		m_PlayerPosition.x -= 1; //TODO
+		m_PlayerPosition.x -= 1;
 		break;
 	
 	case MoveDirection::RIGHT: 
-		m_PlayerPosition.x += 1; //TODO
+		m_PlayerPosition.x += 1;
 		break;
 	
 	}
 
 	m_PlayerPosition.Print();
+}
 
+void Player::CheckInput()
+{
+	//Demander à l'utilisateur de taper quelque chose
+	
+	//Prendre ce qu'il a taper
 
-	//TODO afficher la nouvelle position ici
+	//faire tout les possibilité (déplacement wasd, potion 1, prendre 2) switch case
+
+	//si wasd => moveSet (playerInput) if
+
+	//si 1 boire if
+
+	//si 2 prendre potion (appeler la map, etc)
 }
 
