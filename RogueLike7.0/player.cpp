@@ -1,6 +1,6 @@
 #include <iostream>
-#include "player.h"
 #include "position.h"
+#include "player.h"
 
 
 Player::Player()

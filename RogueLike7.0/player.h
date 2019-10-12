@@ -16,18 +16,20 @@ enum class MoveResult
 	COLLISION
 };
 
+
 class Player
 {
 public:
 	Player();
 	void MoveSet();
-	int PlayerHealth = 30;
+	int playerHealth = 30; //Ajouter la vie (variable)
+	int playerDamage = 5;
 
 	void CheckInput(); //regarde les inputs de l'utilisateur
 
 
 private:
-	//Ajouter la vie (variable)
+	
 	Position m_PlayerPosition{ 0, 0 };
 	MoveDirection direction;
 

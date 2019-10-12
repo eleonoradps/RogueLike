@@ -4,14 +4,14 @@
 class HealthPotion
 {
 public:
-	HealthPotion(const int GetLifePoints);
+	HealthPotion(const int get_LifePoints);
 	~HealthPotion() {};
 
 	void Print() const;
 
-	void DrinkPotion();
-	void PickUpPotion();
+	void DrinkPotion(Player player);
+	void PickUpPotion(Player player);
 
-	int GetHealthPotion = 5;
-
+	int get_HealthPotion = 5;
+	int playerInput;
 };
