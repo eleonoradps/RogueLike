@@ -163,6 +163,12 @@ std::vector<std::string> Map::TileToChar(const Tile tile)
 		c.emplace_back("@");
 		c.emplace_back("\033[0m");
 		break;
+	case POTION: 
+		c.emplace_back("°");
+		break;
+	case ENEMY: 
+		c.emplace_back("$");
+		break;
 	case LENGTH: break;
 	default:
 	{

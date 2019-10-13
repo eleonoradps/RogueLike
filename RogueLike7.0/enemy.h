@@ -12,4 +12,5 @@ public:
 	void CombatSystem(Player player);
 
 private:
+	//Il manque une position du coup je peux pas l'afficher dans la map
 };

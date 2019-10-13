@@ -2,12 +2,16 @@
 #include <vector>
 #include "position.h"
 #include "player.h"
+#include "potion.h"
+#include "enemy.h"
 
 enum Tile : short
 {
 	GROUND,
 	WALL,
 	PLAYER,
+	POTION,
+	ENEMY,
 	LENGTH
 };
 
@@ -110,6 +114,38 @@ public:
 		player_ = &player;
 	}
 
+	void AddPotion(HealthPotion& potion) {
+		potions.push_back(potion);
+	}
+
+	void RemovePotion(HealthPotion& potion) {
+		std::vector<HealthPotion&> newPotions;
+
+		for (int i = 0; i < potions.size(); i++) {
+			if (&potions[i] != &potion) {
+				newPotions.push_back(potion);
+			}
+		}
+
+		potions = newPotions;
+	}
+
+	void AddEnemy(Enemy& enemy) {
+		ennemies.push_back(enemy);
+	}
+
+	void RemoveEnemy(Enemy& enemy) {
+		std::vector<Enemy&> newEnemies;
+
+		for (int i = 0; i < ennemies.size(); i++) {
+			if (&ennemies[i] != &enemy) {
+				newEnemies.push_back(enemy);
+			}
+		}
+
+		ennemies = newEnemies;
+	}
+
 private:
 	static std::vector<std::string> TileToChar(Tile tile);
 
@@ -124,5 +160,7 @@ private:
 	std::vector<int> freeTiles_;
 
 	Player* player_;
-	
+
+	std::vector<HealthPotion&> potions;
+	std::vector<Enemy&> ennemies;
 };

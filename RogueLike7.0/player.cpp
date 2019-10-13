@@ -12,12 +12,12 @@ Player::Player()
 void Player::MoveSet()
 {
 	char key;
-	char main_char = '@';
+	char main_char = '@'; //C'est utilisé nul part puisque le player est affiché depuis la map. Tu peux virer ça
 	bool move = true;
 
 	MoveDirection direction = MoveDirection::DOWN;
 
-	MoveResult moveResult = MoveResult::OK;
+	MoveResult moveResult = MoveResult::OK; //On trouvera lundi ou mardi une solution pour checker sur la map si le personnage peut se déplacer
 
 	std::cin >> key;
 
