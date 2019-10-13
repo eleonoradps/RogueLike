@@ -9,7 +9,7 @@ public:
 
 	void Print() const; //Pas de définition
 
-	void DrinkPotion(Player player);
+	void DrinkPotion(Player player); // Tu n'as pas include player ici
 	void PickUpPotion(Player player);
 
 	int get_HealthPotion = 5; //Mauvaise nomeclature de variable et mauvais nom de variable

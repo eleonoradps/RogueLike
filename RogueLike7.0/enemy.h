@@ -9,7 +9,7 @@ public:
 	int enemyDamage = 4;
 	int enemyHealth = 20;
 
-	void CombatSystem(Player player);
+	void CombatSystem(Player player); //Tu as oublié d'include player
 
 private:
 	//Il manque une position du coup je peux pas l'afficher dans la map
