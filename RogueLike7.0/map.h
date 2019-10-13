@@ -115,15 +115,15 @@ public:
 	}
 
 	void AddPotion(HealthPotion& potion) {
-		potions.push_back(potion);
+		potions.push_back(&potion);
 	}
 
 	void RemovePotion(HealthPotion& potion) {
-		std::vector<HealthPotion&> newPotions;
+		std::vector<HealthPotion*> newPotions;
 
 		for (int i = 0; i < potions.size(); i++) {
-			if (&potions[i] != &potion) {
-				newPotions.push_back(potion);
+			if (potions[i] != &potion) {
+				newPotions.push_back(potions[i]);
 			}
 		}
 
@@ -131,15 +131,15 @@ public:
 	}
 
 	void AddEnemy(Enemy& enemy) {
-		ennemies.push_back(enemy);
+		ennemies.push_back(&enemy);
 	}
 
 	void RemoveEnemy(Enemy& enemy) {
-		std::vector<Enemy&> newEnemies;
+		std::vector<Enemy*> newEnemies;
 
 		for (int i = 0; i < ennemies.size(); i++) {
-			if (&ennemies[i] != &enemy) {
-				newEnemies.push_back(enemy);
+			if (ennemies[i] != &enemy) {
+				newEnemies.push_back(ennemies[i]);
 			}
 		}
 
@@ -161,6 +161,6 @@ private:
 
 	Player* player_;
 
-	std::vector<HealthPotion&> potions;
-	std::vector<Enemy&> ennemies;
+	std::vector<HealthPotion*> potions;
+	std::vector<Enemy*> ennemies;
 };

@@ -57,6 +57,17 @@ void Map::Print()
 			result.insert(result.end(), c.begin(), c.end());
 		}
 		else {
+			//Check potion
+			for (int i = 0; i < potions.size(); i++) {
+				//Get position of potion
+			}
+
+			//Check enemies
+			for (int i = 0; i < ennemies.size(); i++) {
+				//Get position of enemy
+			}
+
+			//Wall
 			auto c = TileToChar(tile);
 			result.insert(result.end(), c.begin(), c.end());
 		}
