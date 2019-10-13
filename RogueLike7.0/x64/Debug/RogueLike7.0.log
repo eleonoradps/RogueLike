@@ -1,0 +1,3 @@
+﻿  potion.cpp
+C:\Users\lorna\SAE Institute\RogueLike\RogueLike7.0\potion.cpp(8): error C4700:  variable locale 'RemainingPlayerHealth' non initialisée utilisée
+C:\Users\lorna\SAE Institute\RogueLike\RogueLike7.0\potion.cpp(34): error C4700:  variable locale 'RemainingPlayerHealth' non initialisée utilisée
