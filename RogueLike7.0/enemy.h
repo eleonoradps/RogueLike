@@ -1,4 +1,5 @@
 #pragma once
+#include "player.h"
 
 class Enemy
 {
@@ -9,8 +10,9 @@ public:
 	int enemyDamage = 4;
 	int enemyHealth = 20;
 
-	void CombatSystem(Player player); //Tu as oublié d'include player
+	void CombatSystem(Player player); //Tu as oubliï¿½ d'include player
 
 private:
-	//Il manque une position du coup je peux pas l'afficher dans la map
+
+	// ajouter position pour afficher dans la map
 };

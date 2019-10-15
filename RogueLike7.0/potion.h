@@ -1,19 +1,20 @@
 #pragma once
+#include "player.h"
 
 
-class HealthPotion //Normalement une classe devrait avoir le même nom qu'une potion
+class Potion
 {
 public:
-	HealthPotion(const int get_LifePoints); //Pas de définition
-	~HealthPotion() {};
+	Potion();
+	~Potion() {};
+	int healthPotion = 5;
 
-	void Print() const; //Pas de définition
+	void Print();
 
-	void DrinkPotion(Player player); // Tu n'as pas include player ici
-	void PickUpPotion(Player player);
+	void DrinkPotion(Player player);
+	// void PickUpPotion(Player player);
 
-	int get_HealthPotion = 5; //Mauvaise nomeclature de variable et mauvais nom de variable
 	int playerInput;
 
-	//Il manque une position du coup je peux pas l'afficher sur la map
+	//ajouter position potion pour la map
 };

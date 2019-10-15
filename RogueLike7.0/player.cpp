@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "position.h"
 #include "player.h"
 
@@ -12,12 +13,11 @@ Player::Player()
 void Player::MoveSet()
 {
 	char key;
-	char main_char = '@'; //C'est utilisé nul part puisque le player est affiché depuis la map. Tu peux virer ça
 	bool move = true;
 
 	MoveDirection direction = MoveDirection::DOWN;
 
-	MoveResult moveResult = MoveResult::OK; //On trouvera lundi ou mardi une solution pour checker sur la map si le personnage peut se déplacer
+	MoveResult moveResult = MoveResult::OK; // ï¿½ revoir
 
 	std::cin >> key;
 
@@ -86,17 +86,61 @@ void Player::MoveSet()
 
 void Player::CheckInput()
 {
-	//Demander à l'utilisateur de taper quelque chose
+	//Demander ï¿½ l'utilisateur de taper quelque chose
 	
 	//Prendre ce qu'il a taper
 
-	//faire tout les possibilité (déplacement wasd, potion 1, prendre 2) switch case
+	//faire tout les possibilitï¿½ (dï¿½placement wasd, potion 1, prendre 2) switch case
 
 	//si wasd => moveSet (playerInput) if
 
 	//si 1 boire if
 
 	//si 2 prendre potion (appeler la map, etc)
+}
+
+void Player::PlayerHealth()
+{
+	// appeler vecteur potion
+
+	if (healthPotion.empty() == true)
+	{
+		std::cout << "You don't have any potions. \n";
+		return;
+	}
+
+	int playerInput;
+	char map_potion = 'P';
+
+
+	std::cout << "To drink healing potion, press [1] \n";
+	// std::cout << "To pick up healing potion, press [2] \n";
+	std::cin >> playerInput;
+
+
+
+	if (playerInput == 1)
+	{
+		std::cout << "You drank a healing potion. \n";
+		playerHealth = playerHealth + Potion::healthPotion; // Ã  revoir
+	}
+
+	/*else if (playerInput == 2)
+	{
+		std::cout << Potion::PickUpPotion << "You picked up a potion. \n";
+	}*/
+
+	//switch (playerInput)
+	//{
+	//case 1:
+	//	Potion::healthPotion; // ï¿½ revoir
+	//	std::cout << Potion::DrinkPotion; // ï¿½ revoir
+	//
+	//case 2:
+	//	Potion::PickUpPotion; // ï¿½ revoir
+	//	std::cout << pickUpPotion;
+	//}
+
 }
 
 Position Player::GetPosition() const

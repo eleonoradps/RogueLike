@@ -1,5 +1,7 @@
 #pragma once
+#include <vector>
 #include "position.h"
+#include "potion.h"
 
 enum class MoveDirection
 {
@@ -25,6 +27,7 @@ public:
 	int playerHealth = 30; //Ajouter la vie (variable)
 	int playerDamage = 5;
 
+	void PlayerHealth();
 	void CheckInput(); //regarde les inputs de l'utilisateur
 
 
@@ -33,6 +36,12 @@ public:
 private:
 	
 	Position m_PlayerPosition{ 0, 0 };
-	MoveDirection direction;
+	MoveDirection direction; 
+	
+	// vecteur potion
+
+	const int maxPotion = 5;
+	std::vector<Potion> healthPotion;
+
 
 };
