@@ -105,6 +105,7 @@ bool Player::PickupPotion(Potion potion)
 	std::cout << "PICKUP POTION\n";
 	std::cout << "Do you want to pick up the potion ? \n Press 1 for yes or 2 for no \n";
 	std::cin >> playerInput;
+
 	if (playerInput == y)
 	{
 		std::cout << "You picked up a healing potion. \n";
@@ -114,6 +115,7 @@ bool Player::PickupPotion(Potion potion)
 	//sinon return false
 	else if (playerInput == n)
 	{
+		playerInput = n;
 		return false;
 	}
 

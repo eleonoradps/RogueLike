@@ -342,7 +342,7 @@ std::vector<std::string> Map::TileToChar(const Tile tile)
 		c.emplace_back("+");
 		break;
 	case ENEMY: 
-		c.emplace_back("-");
+		c.emplace_back("E");
 		break;
 	case TRAP:
 		c.emplace_back("T");
