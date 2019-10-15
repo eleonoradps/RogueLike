@@ -6,12 +6,15 @@ class Enemy
 {
 public:
 	Enemy(const int damage);
+	Enemy(int damage, Position pos);
 	~Enemy() {};
 
 	int enemyDamage = 4;
 	int enemyHealth = 20;
 
-	void CombatSystem(Player player); //Tu as oubli� d'include player
+	bool CombatSystem(Player* player); //Tu as oubli� d'include player
+
+	Position GetPosition() const;
 
 private:
 	// ajouter position pour afficher dans la map

@@ -145,5 +145,5 @@ private:
 	Player* player_;
 
 	std::vector<Potion*> potions_;
-	std::vector<Enemy*> ennemies_;
+	std::vector<Enemy*> enemies_;
 };

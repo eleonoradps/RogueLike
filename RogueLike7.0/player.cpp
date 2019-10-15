@@ -94,30 +94,27 @@ void Player::MoveSet(Map* map)
 	m_PlayerPosition.Print();
 }
 
-void Player::CheckInput()
+bool Player::PickupPotion(Potion potion)
 {
-	//Demander � l'utilisateur de taper quelque chose
-	
-	//Prendre ce qu'il a taper
+	std::cout << "PICKUP POTION\n";
+	//donne le choix à l'utilisateur de ramasser ou non la potion
 
-	//faire tout les possibilit� (d�placement wasd, potion 1, prendre 2) switch case
+	//si prend la potion return true
 
-	//si wasd => moveSet (playerInput) if
+	//sinon return false
 
-	//si 1 boire if
-
-	//si 2 prendre potion (appeler la map, etc)
+	return true;
 }
 
 void Player::PlayerHealth()
 {
 	// appeler vecteur potion
 
-	/*if (healthPotion.empty() == true)
+	if (healthPotion.empty() == true)
 	{
 		std::cout << "You don't have any potions. \n";
 		return;
-	}*/
+	}
 
 	int playerInput;
 	char map_potion = 'P';

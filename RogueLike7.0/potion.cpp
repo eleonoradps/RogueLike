@@ -8,10 +8,10 @@ Potion::Potion(const Position position)
 	m_PotionPosition = position;
 }
 
-void Potion::DrinkPotion(Player* playerHealth)
-{
-	playerHealth->playerHealth += healthPotion; // � revoir
-}
+//void Potion::DrinkPotion(Player* playerHealth)
+//{
+//	playerHealth->playerHealth += healthPotion; // � revoir
+//}
 
 Position Potion::GetPosition() const
 {

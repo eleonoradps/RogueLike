@@ -26,12 +26,12 @@ class Player
 public:
 	Player(){};
 	void MoveSet(Map* map);
-	int playerHealth = 30; //Ajouter la vie (variable)
+	int playerHealth = 30; 
 	int playerDamage = 5;
 
 	void PlayerHealth();
-	void CheckInput(); //regarde les inputs de l'utilisateur
 
+	bool PickupPotion(Potion potion);
 
 	Position GetPosition() const;
 
@@ -43,5 +43,5 @@ private:
 	// vecteur potion
 
 	const int maxPotion = 5;
-	//std::vector<Potion> healthPotion;
+	std::vector<Potion> healthPotion;
 };

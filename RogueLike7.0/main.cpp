@@ -21,14 +21,28 @@ int main()
 	map.AddPotion(p1);
 	map.AddPotion(p2);
 
+	Enemy e0 = Enemy(4, map.GetRandomPosition());
+	Enemy e1 = Enemy(4, map.GetRandomPosition());
+	Enemy e2 = Enemy(4, map.GetRandomPosition());
+
+	map.AddEnemy(e0);
+	map.AddEnemy(e1);
+	map.AddEnemy(e2);
+
+	//First print
+	map.Print();
+	
 	for (int i = 0; i < 100; i++)
 	{
+		//move player
 		player.MoveSet(&map);
-		
+
+		//Clear and draw new map
 		system("cls");
 		map.Print();
 
 		map.Update();
+		player.PlayerHealth();
 	}
 }
 

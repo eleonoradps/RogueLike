@@ -27,6 +27,9 @@ Map::Map(std::vector<std::vector<short>> tiles)
 {
 	tiles_.resize(tiles.size() * tiles[0].size());
 	
+	sizeX_ = tiles[0].size();
+	sizeY_ = tiles.size();
+	
 	for(auto y = 0; y < tiles.size(); y++)
 	{
 		for (auto x = 0; x < tiles[y].size(); x++)
@@ -71,8 +74,15 @@ void Map::Print()
 
 			//Check enemies
 			if (!found) {
-				for (int i = 0; i < ennemies_.size(); i++) {
+				for (auto& enemy : enemies_)
+				{
 					//Get position of enemy
+					if (Pos2Index(enemy->GetPosition()) == index) {
+						auto c = TileToChar(Tile::ENEMY);
+						result.insert(result.end(), c.begin(), c.end());
+						found = true;
+						break;
+					}
 				}
 			}
 
@@ -129,6 +139,8 @@ Position Map::GetRandomPosition()
 
 bool Map::IsFree(Position pos) const
 {
+	if (pos.x < 0 || pos.y < 0 || pos.x >= sizeX_ || pos.y >= sizeY_) return false;
+	
 	return tiles_[Pos2Index(pos)] != WALL;
 }
 
@@ -169,33 +181,79 @@ void Map::RemovePotion(Potion& potion)
 
 void Map::AddEnemy(Enemy& enemy)
 {
-	ennemies_.push_back(&enemy);
+	enemies_.push_back(&enemy);
 }
 
 void Map::RemoveEnemy(Enemy& enemy)
 {
 	std::vector<Enemy*> newEnemies;
 
-	for (int i = 0; i < ennemies_.size(); i++)
+	for (int i = 0; i < enemies_.size(); i++)
 	{
-		if (ennemies_[i] != &enemy)
+		if (enemies_[i] != &enemy)
 		{
-			newEnemies.push_back(ennemies_[i]);
+			newEnemies.push_back(enemies_[i]);
 		}
 	}
 
-	ennemies_ = newEnemies;
+	enemies_ = newEnemies;
 }
 
 void Map::Update()
 {
 	//Check if player is at the same position as a potion
-	for (auto potion : potions_)
+	int indexPotionToRemove = -1;
+	for (int i = 0; i < potions_.size(); i++)
 	{
-		if(potion->GetPosition() == player_->GetPosition())
+		if(potions_[i]->GetPosition() == player_->GetPosition())
 		{
-			std::cout << "ici\n";
+			if(player_->PickupPotion(*potions_[i]))
+			{
+				indexPotionToRemove = i;
+			}
 		}
+	}
+
+	//If a potion has been taken, them remove it from the map
+	if(indexPotionToRemove != -1)
+	{
+		std::vector<Potion*> newPotion;
+		for(int i = 0; i < potions_.size(); i++)
+		{
+			if(i != indexPotionToRemove)
+			{
+				newPotion.push_back(potions_[i]);
+			}
+		}
+
+		potions_ = newPotion;
+	}
+
+	//Check if player is at the same position as a enemy
+	int indexEnemyToRemove = -1;
+	for (int i = 0; i < enemies_.size(); i++)
+	{
+		if (enemies_[i]->GetPosition() == player_->GetPosition())
+		{
+			if(enemies_[i]->CombatSystem(player_))
+			{
+				indexEnemyToRemove = i;
+			}
+		}
+	}
+
+	//If an enemy has been killed, then remove it from the map
+	if(indexEnemyToRemove != -1)
+	{
+		std::vector<Enemy*> newEnemies;
+		for (auto i = 0; i < enemies_.size(); i++)
+		{
+			if (i != indexEnemyToRemove)
+			{
+				newEnemies.push_back(enemies_[i]);
+			}
+		}
+		enemies_ = newEnemies;
 	}
 }
 
@@ -238,7 +296,7 @@ std::vector<std::string> Map::TileToChar(const Tile tile)
 		c.emplace_back("+");
 		break;
 	case ENEMY: 
-		c.emplace_back("$");
+		c.emplace_back("-");
 		break;
 	case LENGTH: break;
 	default:
