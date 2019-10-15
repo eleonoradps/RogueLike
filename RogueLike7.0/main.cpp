@@ -61,7 +61,7 @@ int main()
 
 
 	
-	for (int i = 0; i < 100; i++)
+	while(player.playerHealth > 0 && (e0.enemyHealth > 0 || e1.enemyHealth > 0 || e2.enemyHealth > 0))
 	{
 		//move player
 		player.MoveSet(&map);
