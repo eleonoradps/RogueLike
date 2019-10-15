@@ -1,5 +1,6 @@
 #pragma once
 #include "player.h"
+#include "position.h"
 
 class Enemy
 {
@@ -13,6 +14,6 @@ public:
 	void CombatSystem(Player player); //Tu as oubli� d'include player
 
 private:
-
 	// ajouter position pour afficher dans la map
+	Position m_EnemyPosition{ 0, 0 };
 };

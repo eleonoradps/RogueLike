@@ -1,6 +1,7 @@
 #include <iostream>
 #include "enemy.h"
 #include "player.h"
+#include "position.h"
 
 void Enemy::CombatSystem(Player player)
 {
