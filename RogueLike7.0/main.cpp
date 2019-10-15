@@ -47,6 +47,14 @@ int main()
 	map.AddEnemy(e1);
 	map.AddEnemy(e2);
 
+	Trap trap0 = Trap(map.GetRandomPosition());
+	Trap trap1 = Trap(map.GetRandomPosition());
+	Trap trap2 = Trap(map.GetRandomPosition());
+
+	map.AddTrap(trap0);
+	map.AddTrap(trap1);
+	map.AddTrap(trap2);
+
 	//First print
 	map.Print();
 	MapMenu(player);

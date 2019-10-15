@@ -86,6 +86,20 @@ void Map::Print()
 				}
 			}
 
+			//Check traps
+			if (!found) {
+				for (auto& trap : traps_)
+				{
+					//Get position of enemy
+					if (Pos2Index(trap->m_TrapPosition) == index) {
+						auto c = TileToChar(Tile::TRAP);
+						result.insert(result.end(), c.begin(), c.end());
+						found = true;
+						break;
+					}
+				}
+			}
+
 			//Wall
 			if (!found) {
 				auto c = TileToChar(tile);
@@ -199,6 +213,11 @@ void Map::RemoveEnemy(Enemy& enemy)
 	enemies_ = newEnemies;
 }
 
+void Map::AddTrap(Trap& trap)
+{
+	traps_.push_back(&trap);
+}
+
 void Map::Update()
 {
 	//Check if player is at the same position as a potion
@@ -255,6 +274,33 @@ void Map::Update()
 		}
 		enemies_ = newEnemies;
 	}
+
+	//Check if player is at the same position as a trap
+	int indexTrapToRemove = -1;
+	for (int i = 0; i < traps_.size(); i++)
+	{
+		if (traps_[i]->m_TrapPosition == player_->GetPosition())
+		{
+			if (player_->playerHealth -= traps_[i]->trapsDamage)
+			{
+				indexTrapToRemove = i;
+			}
+		}
+	}
+
+	//If an enemy has been killed, then remove it from the map
+	if (indexTrapToRemove != -1)
+	{
+		std::vector<Trap*> newTraps;
+		for (auto i = 0; i < traps_.size(); i++)
+		{
+			if (i != indexTrapToRemove)
+			{
+				newTraps.push_back(traps_[i]);
+			}
+		}
+		traps_ = newTraps;
+	}
 }
 
 Position Map::Index2Pos(const int index) const
@@ -297,6 +343,9 @@ std::vector<std::string> Map::TileToChar(const Tile tile)
 		break;
 	case ENEMY: 
 		c.emplace_back("-");
+		break;
+	case TRAP:
+		c.emplace_back("T");
 		break;
 	case LENGTH: break;
 	default:
