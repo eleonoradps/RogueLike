@@ -12,11 +12,10 @@ public:
 	int enemyDamage = 4;
 	int enemyHealth = 20;
 
-	bool CombatSystem(Player* player); //Tu as oubli� d'include player
+	bool CombatSystem(Player* player);
 
 	Position GetPosition() const;
 
 private:
-	// ajouter position pour afficher dans la map
 	Position m_EnemyPosition{ 0, 0 };
 };

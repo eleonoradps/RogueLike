@@ -11,7 +11,7 @@ void Player::MoveSet(Map* map)
 
 	MoveDirection direction = MoveDirection::DOWN;
 
-	MoveResult moveResult = MoveResult::OK; // � revoir
+	MoveResult moveResult = MoveResult::OK;
 
 	std::cin >> key;
 
@@ -36,7 +36,7 @@ void Player::MoveSet(Map* map)
 		direction = MoveDirection::UP;
 	}
 
-	//TODO rajouter le IsFree() de la map une fois le merge fait
+	//rajouter le IsFree() de la map une fois le merge fait
 
 	switch (moveResult)
 	{
@@ -96,58 +96,45 @@ void Player::MoveSet(Map* map)
 
 bool Player::PickupPotion(Potion potion)
 {
+	int y = 1;
+	int n = 2;
 	std::cout << "PICKUP POTION\n";
 	//donne le choix à l'utilisateur de ramasser ou non la potion
-
+	std::cout << "Do you want to pick up the potion ? \n Press 1 for yes or 2 for no \n";
+	std::cin >> playerInput;
 	//si prend la potion return true
-
+	if (playerInput == y)
+	{
+		std::cout << "You picked up a healing potion. \n";
+		healthPotion.push_back(potion);
+		return true;
+	}
 	//sinon return false
+	else if (playerInput == n)
+	{
+		return false;
+	}
 
-	return true;
 }
 
 void Player::PlayerHealth()
 {
-	// appeler vecteur potion
-
 	if (healthPotion.empty() == true)
 	{
 		std::cout << "You don't have any potions. \n";
 		return;
 	}
 
-	int playerInput;
-	char map_potion = 'P';
-
-
 	std::cout << "To drink healing potion, press [1] \n";
-	// std::cout << "To pick up healing potion, press [2] \n";
 	std::cin >> playerInput;
-
-
 
 	if (playerInput == 1)
 	{
 		std::cout << "You drank a healing potion. \n";
-		//playerHealth = playerHealth + Potion::healthPotion; // à revoir
+		playerHealth = playerHealth + healthPotion[healthPotion.size() - 1].healthPotion;
+
+		healthPotion.pop_back();
 	}
-
-	/*else if (playerInput == 2)
-	{
-		std::cout << Potion::PickUpPotion << "You picked up a potion. \n";
-	}*/
-
-	//switch (playerInput)
-	//{
-	//case 1:
-	//	Potion::healthPotion; // � revoir
-	//	std::cout << Potion::DrinkPotion; // � revoir
-	//
-	//case 2:
-	//	Potion::PickUpPotion; // � revoir
-	//	std::cout << pickUpPotion;
-	//}
-
 }
 
 Position Player::GetPosition() const

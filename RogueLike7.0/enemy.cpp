@@ -39,16 +39,26 @@ bool Enemy::CombatSystem(Player* player)
 			player->playerHealth = player->playerHealth - enemyDamage;
 			std::cout << "You have now " << player->playerHealth << " health points left. \n";
 		}
-		else if (hitEnemy == N)
+		/*else if (hitEnemy == N)
 		{
-			std::cout << "You decided to not hit the enemy. \n";
-			return false; //WTF pourquoi on retourne tout de suite? Genre on peut fuire? Si oui return false
-		}
+			std::cout << "The enemy attacks you first instead. \n";
+			player->playerHealth = player->playerHealth - enemyDamage;
+			std::cout << "You have now " << player->playerHealth << " health points left. \n";
+		}*/
+	
 	}
-
 	//si joueur meurt return false
+	if (player->playerHealth <= 0)
+	{
+		std::cout << "You were killed by your opponent. \n You lost. \n";
+		return false;
+	}
 	//si enemi meur return true;
-	return true;
+	if (enemyHealth <= 0)
+	{
+		std::cout << "You killed your opponent! \n You won! \n";
+		return true;
+	}
 }
 
 Position Enemy::GetPosition() const
