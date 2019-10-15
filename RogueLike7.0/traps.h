@@ -4,7 +4,9 @@ class Trap
 {
 public:
 	Trap();
-	~Traps() {};
+	~Trap() {};
+
+	void MapTraps();
 
 	int trapsDamage = 5;
 };

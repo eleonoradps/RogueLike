@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 #include "position.h"
 #include "player.h"
 
@@ -96,6 +97,50 @@ void Player::CheckInput()
 	//si 1 boire if
 
 	//si 2 prendre potion (appeler la map, etc)
+}
+
+void Player::PlayerHealth()
+{
+	// appeler vecteur potion
+
+	if (healthPotion.empty() == true)
+	{
+		std::cout << "You don't have any potions. \n";
+		return;
+	}
+
+	int playerInput;
+	char map_potion = 'P';
+
+
+	std::cout << "To drink healing potion, press [1] \n";
+	// std::cout << "To pick up healing potion, press [2] \n";
+	std::cin >> playerInput;
+
+
+
+	if (playerInput == 1)
+	{
+		std::cout << "You drank a healing potion. \n";
+		playerHealth = playerHealth + Potion::healthPotion; // à revoir
+	}
+
+	/*else if (playerInput == 2)
+	{
+		std::cout << Potion::PickUpPotion << "You picked up a potion. \n";
+	}*/
+
+	//switch (playerInput)
+	//{
+	//case 1:
+	//	Potion::healthPotion; // � revoir
+	//	std::cout << Potion::DrinkPotion; // � revoir
+	//
+	//case 2:
+	//	Potion::PickUpPotion; // � revoir
+	//	std::cout << pickUpPotion;
+	//}
+
 }
 
 Position Player::GetPosition() const

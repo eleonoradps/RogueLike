@@ -1,5 +1,7 @@
 #pragma once
+#include <vector>
 #include "position.h"
+#include "potion.h"
 
 enum class MoveDirection
 {
@@ -34,6 +36,12 @@ public:
 private:
 	
 	Position m_PlayerPosition{ 0, 0 };
-	MoveDirection direction;
+	MoveDirection direction; 
+	
+	// vecteur potion
+
+	const int maxPotion = 5;
+	std::vector<Potion> healthPotion;
+
 
 };

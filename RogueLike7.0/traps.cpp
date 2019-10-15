@@ -2,14 +2,14 @@
 #include "traps.h"
 #include "player.h"
 
-void MapTraps() //Appartient pas � la classe Traps
+void Trap::MapTraps() // nico met dans map stp
 {
 	char map_trap = 'T';
 
-	if (Player == 'T') // � revoir
+	if (Player == 'T') // à revoir
 	{
-		Player::playerHealth = Player::playerHealth - Trap::trapsDamage;
-		std::cout << "You walked on a trap! \n" << map_trap << " You lost 5 Health Points. \n";
+		Player::playerHealth = Player::playerHealth - trapsDamage;
+		std::cout << "You walked on a trap! \n" << " You lost 5 Health Points. \n";
 	}
 
 }
