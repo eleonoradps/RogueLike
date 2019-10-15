@@ -32,6 +32,10 @@ void Player::MoveSet(Map* map)
 	case 'd':
 		direction = MoveDirection::RIGHT;
 		break;
+	case 'p':
+		PlayerHealth();
+		return;
+		break;
 	default: 
 		direction = MoveDirection::UP;
 	}
@@ -99,10 +103,8 @@ bool Player::PickupPotion(Potion potion)
 	int y = 1;
 	int n = 2;
 	std::cout << "PICKUP POTION\n";
-	//donne le choix à l'utilisateur de ramasser ou non la potion
 	std::cout << "Do you want to pick up the potion ? \n Press 1 for yes or 2 for no \n";
 	std::cin >> playerInput;
-	//si prend la potion return true
 	if (playerInput == y)
 	{
 		std::cout << "You picked up a healing potion. \n";
@@ -125,7 +127,7 @@ void Player::PlayerHealth()
 		return;
 	}
 
-	std::cout << "To drink healing potion, press [1] \n";
+	std::cout << "To drink healing potion, press [1]. \n To continue playing, Press [2]. \n";
 	std::cin >> playerInput;
 
 	if (playerInput == 1)
@@ -134,6 +136,11 @@ void Player::PlayerHealth()
 		playerHealth = playerHealth + healthPotion[healthPotion.size() - 1].healthPotion;
 
 		healthPotion.pop_back();
+	}
+	else if (playerInput == 2)
+	{
+		std::cout << "You did not use potion. \n";
+		return;
 	}
 }
 

@@ -1,12 +1,13 @@
 #pragma once
+#include "position.h"
 
 class Trap
 {
 public:
-	Trap();
+	Trap(Position positionTrap);
 	~Trap() {};
 
-	void MapTraps();
+	Position m_TrapPosition{ 0,0 };
 
 	int trapsDamage = 5;
 };

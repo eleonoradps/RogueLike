@@ -1,13 +1,31 @@
 #include <iostream>
 #include "position.h"
 #include "player.h"
+#include "potion.h"
 #include "map.h"
 
 // ex 7.0
+void MapMenu(Player player)
+{
 
+	std::cout << "\n ##################################################	\n";
+	std::cout << " # \t\t Commands: \t\t\t  # \n";
+	std::cout << " # \t\t UP = w \t\t\t  # \n";
+	std::cout << " # \t\t DOWN = s \t\t\t  # \n";
+	std::cout << " # \t\t LEFT = a      \t\t\t  # \n";
+	std::cout << " # \t\t RIGHT = d      \t\t  # \n";
+	std::cout << " # \t\t "<< player.playerHealth <<"      \t\t\t  # \n";
+	std::cout << " # \t\t       \t\t\t\t  # \n";
+	std::cout << " # \t\t       \t\t\t\t  # \n";
+	std::cout << " ################################################## \n";
+
+
+}
 
 int main()
 {
+
+
 	Player player = Player();
 
 	Map map = Map(level_0);
@@ -31,6 +49,9 @@ int main()
 
 	//First print
 	map.Print();
+	MapMenu(player);
+
+
 	
 	for (int i = 0; i < 100; i++)
 	{
@@ -40,9 +61,10 @@ int main()
 		//Clear and draw new map
 		system("cls");
 		map.Print();
+	
+		MapMenu(player);
 
 		map.Update();
-		player.PlayerHealth();
 	}
 }
 
