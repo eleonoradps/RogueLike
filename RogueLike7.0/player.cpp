@@ -16,7 +16,7 @@ void Player::MoveSet()
 
 	MoveDirection direction = MoveDirection::DOWN;
 
-	MoveResult moveResult = MoveResult::OK; // à revoir
+	MoveResult moveResult = MoveResult::OK; // ï¿½ revoir
 
 	std::cin >> key;
 
@@ -85,16 +85,21 @@ void Player::MoveSet()
 
 void Player::CheckInput()
 {
-	//Demander à l'utilisateur de taper quelque chose
+	//Demander ï¿½ l'utilisateur de taper quelque chose
 	
 	//Prendre ce qu'il a taper
 
-	//faire tout les possibilité (déplacement wasd, potion 1, prendre 2) switch case
+	//faire tout les possibilitï¿½ (dï¿½placement wasd, potion 1, prendre 2) switch case
 
 	//si wasd => moveSet (playerInput) if
 
 	//si 1 boire if
 
 	//si 2 prendre potion (appeler la map, etc)
+}
+
+Position Player::GetPosition() const
+{
+	return m_PlayerPosition;
 }
 

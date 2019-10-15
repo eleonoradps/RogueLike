@@ -4,7 +4,7 @@
 
 void Potion::DrinkPotion(Player playerHealth)
 {
-	playerHealth += healthPotion; // à revoir
+	playerHealth += healthPotion; // ï¿½ revoir
 }
 
 //void Potion::PickUpPotion(Player player)
@@ -29,7 +29,7 @@ void Player::PlayerHealth()
 	if (playerInput == 1)
 	{
 		std::cout << "You drank a healing potion. \n";
-		Player::playerHealth = Player::playerHealth + Potion::healthPotion; // à revoir
+		Player::playerHealth = Player::playerHealth + Potion::healthPotion; // ï¿½ revoir
 	}
 
 	/*else if (playerInput == 2)
@@ -40,11 +40,11 @@ void Player::PlayerHealth()
 	//switch (playerInput)
 	//{
 	//case 1:
-	//	Potion::healthPotion; // à revoir
-	//	std::cout << Potion::DrinkPotion; // à revoir
+	//	Potion::healthPotion; // ï¿½ revoir
+	//	std::cout << Potion::DrinkPotion; // ï¿½ revoir
 	//
 	//case 2:
-	//	Potion::PickUpPotion; // à revoir
+	//	Potion::PickUpPotion; // ï¿½ revoir
 	//	std::cout << pickUpPotion;
 	//}
 

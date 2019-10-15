@@ -29,6 +29,8 @@ public:
 	void CheckInput(); //regarde les inputs de l'utilisateur
 
 
+	Position GetPosition() const;
+
 private:
 	
 	Position m_PlayerPosition{ 0, 0 };

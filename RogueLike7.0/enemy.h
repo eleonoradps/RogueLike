@@ -10,7 +10,7 @@ public:
 	int enemyDamage = 4;
 	int enemyHealth = 20;
 
-	void CombatSystem(Player player);
+	void CombatSystem(Player player); //Tu as oubli� d'include player
 
 private:
 
