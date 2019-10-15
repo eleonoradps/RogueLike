@@ -1,6 +1,7 @@
 #include <iostream>
 #include "potion.h"
 #include "player.h"
+#include "position.h"
 
 void Potion::DrinkPotion(Player playerHealth)
 {

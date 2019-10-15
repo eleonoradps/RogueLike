@@ -1,5 +1,6 @@
 #pragma once
 #include "player.h"
+#include "position.h"
 
 
 class Potion
@@ -15,6 +16,8 @@ public:
 	// void PickUpPotion(Player player);
 
 	int playerInput;
-
 	//ajouter position potion pour la map
+
+private:
+	Position m_PotionPosition{ 0, 0 };
 };
