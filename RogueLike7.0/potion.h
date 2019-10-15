@@ -1,17 +1,20 @@
 #pragma once
+#include "player.h"
 
 
-class HealthPotion
+class Potion
 {
 public:
-	HealthPotion(const int get_LifePoints);
-	~HealthPotion() {};
+	Potion();
+	~Potion() {};
+	int healthPotion = 5;
 
-	void Print() const;
+	void Print();
 
 	void DrinkPotion(Player player);
-	void PickUpPotion(Player player);
+	// void PickUpPotion(Player player);
 
-	int get_HealthPotion = 5;
 	int playerInput;
+
+	//ajouter position potion pour la map
 };

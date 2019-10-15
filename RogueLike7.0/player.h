@@ -25,6 +25,7 @@ public:
 	int playerHealth = 30; //Ajouter la vie (variable)
 	int playerDamage = 5;
 
+	void PlayerHealth();
 	void CheckInput(); //regarde les inputs de l'utilisateur
 
 

@@ -2,60 +2,51 @@
 #include "potion.h"
 #include "player.h"
 
-void HealthPotion::DrinkPotion(Player player)
+void Potion::DrinkPotion(Player playerHealth)
 {
-	int playerInput;
-	if (playerInput == 1) {
-		std::cout << "You drank one healing potion. \n";
-	}
+	playerHealth += healthPotion; // à revoir
 }
 
-void HealthPotion::PickUpPotion(Player player)
-{
-	if (playerInput == 2)
-	{
-		std::cout << "You picked up one healing potion. \n";
-	}
-}
+//void Potion::PickUpPotion(Player player)
+//{
+//	if (playerInput == 2)
+//	{
+//		std::cout << "You picked up one healing potion. \n";
+//	}
+//}
 
-void PlayerHealth() 
+void Player::PlayerHealth()
 {
-	int get_HealthPotion = 5;
-	int playerHealth = 30;
-	int pickUpPotion;
 	int playerInput;
-	int remainingPlayerHealth;
-	char map_potion = '°';
+	char map_potion = 'P';
 
 
-	std::cout << "To select healing potion, press [1] \n";
-	std::cout << "To pick up healing potion, press [2] \n";
+	std::cout << "To drink healing potion, press [1] \n";
+	// std::cout << "To pick up healing potion, press [2] \n";
 	std::cin >> playerInput;
 
 
 	if (playerInput == 1)
 	{
-		std::cout << "You selected a healing potion. \n";
-		playerHealth = playerHealth + get_HealthPotion;
-	}
-	else if (playerInput == 2)
-	{
-		pickUpPotion;
-		std::cout << "You picked up a potion. \n";
+		std::cout << "You drank a healing potion. \n";
+		Player::playerHealth = Player::playerHealth + Potion::healthPotion; // à revoir
 	}
 
-	switch (playerInput)
+	/*else if (playerInput == 2)
 	{
-	case 1:
-		HealthPotion::DrinkPotion;
-		std::cout << HealthPotion::DrinkPotion;
-	
-	case 2:
-		HealthPotion::PickUpPotion;
-		std::cout << pickUpPotion;
-	}
+		std::cout << Potion::PickUpPotion << "You picked up a potion. \n";
+	}*/
 
-	std::cout << '°';
+	//switch (playerInput)
+	//{
+	//case 1:
+	//	Potion::healthPotion; // à revoir
+	//	std::cout << Potion::DrinkPotion; // à revoir
+	//
+	//case 2:
+	//	Potion::PickUpPotion; // à revoir
+	//	std::cout << pickUpPotion;
+	//}
 
 }
 

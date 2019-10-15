@@ -1,4 +1,5 @@
 #pragma once
+#include "player.h"
 
 class Enemy
 {
@@ -12,4 +13,6 @@ public:
 	void CombatSystem(Player player);
 
 private:
+
+	// ajouter position pour afficher dans la map
 };

@@ -1,9 +1,9 @@
 #pragma once
 
-class Traps
+class Trap
 {
 public:
-	Traps(const int trapsDamage);
+	Trap();
 	~Traps() {};
 
 	int trapsDamage = 5;

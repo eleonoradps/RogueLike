@@ -12,12 +12,11 @@ Player::Player()
 void Player::MoveSet()
 {
 	char key;
-	char main_char = '@';
 	bool move = true;
 
 	MoveDirection direction = MoveDirection::DOWN;
 
-	MoveResult moveResult = MoveResult::OK;
+	MoveResult moveResult = MoveResult::OK; // à revoir
 
 	std::cin >> key;
 
