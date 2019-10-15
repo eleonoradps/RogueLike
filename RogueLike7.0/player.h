@@ -31,16 +31,17 @@ public:
 
 	void PlayerHealth();
 
+	int playerInput{};
+
 	bool PickupPotion(Potion potion);
 
 	Position GetPosition() const;
 
+
 private:
 	
 	Position m_PlayerPosition{ 1, 1 };
-	MoveDirection direction; 
-	
-	// vecteur potion
+	MoveDirection direction;
 
 	const int maxPotion = 5;
 	std::vector<Potion> healthPotion;

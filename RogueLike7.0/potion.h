@@ -13,12 +13,7 @@ public:
 
 	void Print();
 
-	//void DrinkPotion(Player* player);
-	// void PickUpPotion(Player player);
-
-	int playerInput{};
-
-	Position GetPosition() const;;
+	Position GetPosition() const;
 
 private:
 	Position m_PotionPosition{ 0, 0 };

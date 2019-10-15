@@ -61,6 +61,8 @@ static std::vector<std::vector<short>> level_0{
 class Map
 {
 public:
+
+	void MapMenu();
 	/**
 	 * \brief Create a random map 
 	 */
