@@ -102,42 +102,15 @@ public:
 	 */
 	bool IsFree(Tile tile) const;
 
-	void AddPlayer(Player& player)
-	{
-		player_ = &player;
-	}
+	void AddPlayer(Player& player);
 
-	void AddPotion(Potion& potion) {
-		potions_.push_back(&potion);
-	}
+	void AddPotion(Potion& potion);
 
-	void RemovePotion(Potion& potion) {
-		std::vector<Potion*> newPotions;
+	void RemovePotion(Potion& potion);
 
-		for (int i = 0; i < potions_.size(); i++) {
-			if (potions_[i] != &potion) {
-				newPotions.push_back(potions_[i]);
-			}
-		}
+	void AddEnemy(Enemy& enemy);
 
-		potions_ = newPotions;
-	}
-
-	void AddEnemy(Enemy& enemy) {
-		ennemies_.push_back(&enemy);
-	}
-
-	void RemoveEnemy(Enemy& enemy) {
-		std::vector<Enemy*> newEnemies;
-
-		for (int i = 0; i < ennemies_.size(); i++) {
-			if (ennemies_[i] != &enemy) {
-				newEnemies.push_back(ennemies_[i]);
-			}
-		}
-
-		ennemies_ = newEnemies;
-	}
+	void RemoveEnemy(Enemy& enemy);
 
 private:
 	static std::vector<std::string> TileToChar(Tile tile);

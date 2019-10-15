@@ -24,7 +24,7 @@ enum class MoveResult
 class Player
 {
 public:
-	Player();
+	Player(){};
 	void MoveSet(Map* map);
 	int playerHealth = 30; //Ajouter la vie (variable)
 	int playerDamage = 5;

@@ -4,10 +4,6 @@
 #include "player.h"
 #include "map.h"
 
-Player::Player()
-{
-}
-
 void Player::MoveSet(Map* map)
 {
 	char key;

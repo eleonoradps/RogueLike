@@ -57,19 +57,30 @@ void Map::Print()
 			result.insert(result.end(), c.begin(), c.end());
 		}
 		else {
+			bool found = false;
 			//Check potion
-			for (int i = 0; i < potions_.size(); i++) {
-				//Get position of potion
+			for (auto& potion : potions_)
+			{
+				if (Pos2Index(potion->GetPosition()) == index) {
+					auto c = TileToChar(Tile::POTION);
+					result.insert(result.end(), c.begin(), c.end());
+					found = true;
+					break;
+				}
 			}
 
 			//Check enemies
-			for (int i = 0; i < ennemies_.size(); i++) {
-				//Get position of enemy
+			if (!found) {
+				for (int i = 0; i < ennemies_.size(); i++) {
+					//Get position of enemy
+				}
 			}
 
 			//Wall
-			auto c = TileToChar(tile);
-			result.insert(result.end(), c.begin(), c.end());
+			if (!found) {
+				auto c = TileToChar(tile);
+				result.insert(result.end(), c.begin(), c.end());
+			}
 		}
 
 		
@@ -108,9 +119,6 @@ Position Map::GetRandomPosition()
 		if(i != indexFreeTile)
 		{
 			newFreeTiles.push_back(freeTiles_[i]);
-		}else
-		{
-			tiles_[freeTiles_[i]] = WALL;
 		}
 	}
 	freeTiles_.clear();
@@ -121,7 +129,7 @@ Position Map::GetRandomPosition()
 
 bool Map::IsFree(Position pos) const
 {
-	return tiles_[Pos2Index(pos)] == GROUND;
+	return tiles_[Pos2Index(pos)] != WALL;
 }
 
 bool Map::IsFree(const int x, const int y) const
@@ -132,6 +140,51 @@ bool Map::IsFree(const int x, const int y) const
 bool Map::IsFree(const Tile tile) const
 {
 	return tile == GROUND;
+}
+
+void Map::AddPlayer(Player& player)
+{
+	player_ = &player;
+}
+
+void Map::AddPotion(Potion& potion)
+{
+	potions_.push_back(&potion);
+}
+
+void Map::RemovePotion(Potion& potion)
+{
+	std::vector<Potion*> newPotions;
+
+	for (int i = 0; i < potions_.size(); i++)
+	{
+		if (potions_[i] != &potion)
+		{
+			newPotions.push_back(potions_[i]);
+		}
+	}
+
+	potions_ = newPotions;
+}
+
+void Map::AddEnemy(Enemy& enemy)
+{
+	ennemies_.push_back(&enemy);
+}
+
+void Map::RemoveEnemy(Enemy& enemy)
+{
+	std::vector<Enemy*> newEnemies;
+
+	for (int i = 0; i < ennemies_.size(); i++)
+	{
+		if (ennemies_[i] != &enemy)
+		{
+			newEnemies.push_back(ennemies_[i]);
+		}
+	}
+
+	ennemies_ = newEnemies;
 }
 
 Position Map::Index2Pos(const int index) const
@@ -170,7 +223,7 @@ std::vector<std::string> Map::TileToChar(const Tile tile)
 		c.emplace_back("\033[0m");
 		break;
 	case POTION: 
-		c.emplace_back("°");
+		c.emplace_back("+");
 		break;
 	case ENEMY: 
 		c.emplace_back("$");
