@@ -101,16 +101,33 @@ public:
 	 * \return true if free
 	 */
 	bool IsFree(Tile tile) const;
-
+	/**
+	 * \brief Add player to the map
+	 * \param player 
+	 */
 	void AddPlayer(Player& player);
-
+	/**
+	 * \brief Add a potion into the map
+	 * \param potion 
+	 */
 	void AddPotion(Potion& potion);
-
+	/**
+	 * \brief Remove a potion from the map
+	 * \param potion 
+	 */
 	void RemovePotion(Potion& potion);
-
+	/**
+	 * \brief Add a potion in the map
+	 * \param enemy 
+	 */
 	void AddEnemy(Enemy& enemy);
-
+	/**
+	 * \brief Remove an enemy from the map
+	 * \param enemy 
+	 */
 	void RemoveEnemy(Enemy& enemy);
+
+	void Update();
 
 private:
 	static std::vector<std::string> TileToChar(Tile tile);

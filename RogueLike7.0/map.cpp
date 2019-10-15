@@ -139,7 +139,7 @@ bool Map::IsFree(const int x, const int y) const
 
 bool Map::IsFree(const Tile tile) const
 {
-	return tile == GROUND;
+	return tile != WALL;
 }
 
 void Map::AddPlayer(Player& player)
@@ -185,6 +185,18 @@ void Map::RemoveEnemy(Enemy& enemy)
 	}
 
 	ennemies_ = newEnemies;
+}
+
+void Map::Update()
+{
+	//Check if player is at the same position as a potion
+	for (auto potion : potions_)
+	{
+		if(potion->GetPosition() == player_->GetPosition())
+		{
+			std::cout << "ici\n";
+		}
+	}
 }
 
 Position Map::Index2Pos(const int index) const

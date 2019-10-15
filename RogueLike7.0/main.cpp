@@ -27,6 +27,8 @@ int main()
 		
 		system("cls");
 		map.Print();
+
+		map.Update();
 	}
 }
 
