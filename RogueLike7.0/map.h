@@ -82,19 +82,12 @@ public:
 	 * \return a random position if one is available. If there is no free position left, return wrong_position 
 	 */
 	Position GetRandomPosition();
-
-	/**
-	 * \brief Check if a given position is free
-	 * \param pos 
-	 * \return true if free
-	 */
-	bool IsFree(Position pos) const;
 	/**
 	 * \brief Check if a given position is free
 	 * \param pos
 	 * \return true if free
 	 */
-	bool IsFree(Position& pos) const;
+	bool IsFree(Position pos) const;
 	/**
 	 * \brief Check if a given position is free
 	 * \param x coord x
@@ -114,36 +107,36 @@ public:
 		player_ = &player;
 	}
 
-	void AddPotion(HealthPotion& potion) {
-		potions.push_back(&potion);
+	void AddPotion(Potion& potion) {
+		potions_.push_back(&potion);
 	}
 
-	void RemovePotion(HealthPotion& potion) {
-		std::vector<HealthPotion*> newPotions;
+	void RemovePotion(Potion& potion) {
+		std::vector<Potion*> newPotions;
 
-		for (int i = 0; i < potions.size(); i++) {
-			if (potions[i] != &potion) {
-				newPotions.push_back(potions[i]);
+		for (int i = 0; i < potions_.size(); i++) {
+			if (potions_[i] != &potion) {
+				newPotions.push_back(potions_[i]);
 			}
 		}
 
-		potions = newPotions;
+		potions_ = newPotions;
 	}
 
 	void AddEnemy(Enemy& enemy) {
-		ennemies.push_back(&enemy);
+		ennemies_.push_back(&enemy);
 	}
 
 	void RemoveEnemy(Enemy& enemy) {
 		std::vector<Enemy*> newEnemies;
 
-		for (int i = 0; i < ennemies.size(); i++) {
-			if (ennemies[i] != &enemy) {
-				newEnemies.push_back(ennemies[i]);
+		for (int i = 0; i < ennemies_.size(); i++) {
+			if (ennemies_[i] != &enemy) {
+				newEnemies.push_back(ennemies_[i]);
 			}
 		}
 
-		ennemies = newEnemies;
+		ennemies_ = newEnemies;
 	}
 
 private:
@@ -161,6 +154,6 @@ private:
 
 	Player* player_;
 
-	std::vector<HealthPotion*> potions;
-	std::vector<Enemy*> ennemies;
+	std::vector<Potion*> potions_;
+	std::vector<Enemy*> ennemies_;
 };

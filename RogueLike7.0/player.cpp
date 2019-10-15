@@ -2,15 +2,13 @@
 #include <vector>
 #include "position.h"
 #include "player.h"
-
+#include "map.h"
 
 Player::Player()
 {
-	m_PlayerPosition.x = 0;
-	m_PlayerPosition.y = 0;
 }
 
-void Player::MoveSet()
+void Player::MoveSet(Map* map)
 {
 	char key;
 	bool move = true;
@@ -63,20 +61,36 @@ void Player::MoveSet()
 	}
 
 	switch (direction) {
-	case MoveDirection::DOWN: 
+	case MoveDirection::DOWN:
 		m_PlayerPosition.y += 1;
+		if(!map->IsFree(m_PlayerPosition))
+		{
+			m_PlayerPosition.y -= 1;
+		}
 		break;
 	
 	case MoveDirection::UP: 
 		m_PlayerPosition.y -= 1;
+		if (!map->IsFree(m_PlayerPosition))
+		{
+			m_PlayerPosition.y += 1;
+		}
 		break;
 	
 	case MoveDirection::LEFT: 
 		m_PlayerPosition.x -= 1;
+		if (!map->IsFree(m_PlayerPosition))
+		{
+			m_PlayerPosition.x += 1;
+		}
 		break;
 	
 	case MoveDirection::RIGHT: 
 		m_PlayerPosition.x += 1;
+		if (!map->IsFree(m_PlayerPosition))
+		{
+			m_PlayerPosition.x -= 1;
+		}
 		break;
 	
 	}
@@ -103,11 +117,11 @@ void Player::PlayerHealth()
 {
 	// appeler vecteur potion
 
-	if (healthPotion.empty() == true)
+	/*if (healthPotion.empty() == true)
 	{
 		std::cout << "You don't have any potions. \n";
 		return;
-	}
+	}*/
 
 	int playerInput;
 	char map_potion = 'P';
@@ -122,7 +136,7 @@ void Player::PlayerHealth()
 	if (playerInput == 1)
 	{
 		std::cout << "You drank a healing potion. \n";
-		playerHealth = playerHealth + Potion::healthPotion; // à revoir
+		//playerHealth = playerHealth + Potion::healthPotion; // à revoir
 	}
 
 	/*else if (playerInput == 2)

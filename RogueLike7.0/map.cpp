@@ -58,12 +58,12 @@ void Map::Print()
 		}
 		else {
 			//Check potion
-			for (int i = 0; i < potions.size(); i++) {
+			for (int i = 0; i < potions_.size(); i++) {
 				//Get position of potion
 			}
 
 			//Check enemies
-			for (int i = 0; i < ennemies.size(); i++) {
+			for (int i = 0; i < ennemies_.size(); i++) {
 				//Get position of enemy
 			}
 
@@ -119,12 +119,7 @@ Position Map::GetRandomPosition()
 	return pos;
 }
 
-bool Map::IsFree(const Position pos) const
-{
-	return tiles_[Pos2Index(pos)] == GROUND;
-}
-
-bool Map::IsFree(Position& pos) const
+bool Map::IsFree(Position pos) const
 {
 	return tiles_[Pos2Index(pos)] == GROUND;
 }

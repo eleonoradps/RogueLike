@@ -3,6 +3,8 @@
 #include "position.h"
 #include "potion.h"
 
+class Map; //Prototype
+
 enum class MoveDirection
 {
 	UP,
@@ -23,7 +25,7 @@ class Player
 {
 public:
 	Player();
-	void MoveSet();
+	void MoveSet(Map* map);
 	int playerHealth = 30; //Ajouter la vie (variable)
 	int playerDamage = 5;
 
@@ -35,13 +37,11 @@ public:
 
 private:
 	
-	Position m_PlayerPosition{ 0, 0 };
+	Position m_PlayerPosition{ 1, 1 };
 	MoveDirection direction; 
 	
 	// vecteur potion
 
 	const int maxPotion = 5;
-	std::vector<Potion> healthPotion;
-
-
+	//std::vector<Potion> healthPotion;
 };

@@ -2,9 +2,9 @@
 #include "potion.h"
 #include "player.h"
 
-void Potion::DrinkPotion(Player playerHealth)
+void Potion::DrinkPotion(Player* playerHealth)
 {
-	playerHealth.playerHealth += healthPotion; // � revoir
+	playerHealth->playerHealth += healthPotion; // � revoir
 }
 
 //void Potion::PickUpPotion(Player player)

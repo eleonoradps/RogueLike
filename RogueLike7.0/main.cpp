@@ -15,7 +15,7 @@ int main()
 
 	for (int i = 0; i < 100; i++)
 	{
-		player.MoveSet();
+		player.MoveSet(&map);
 		
 		system("cls");
 		map.Print();
