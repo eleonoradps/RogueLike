@@ -15,50 +15,51 @@ bool Enemy::CombatSystem(Player* player)
 	int Y = 1;
 	int N = 2;
 
-	std::cout << "COMBAT\n";
+	std::cout << "You encountered an enemy. \n";
 	
-	while ((player->playerHealth <= 0) && (enemyHealth <= 0))
+	std::cout << "Hit the enemy ? \n Press 1 for Yes or 2 for No. \n";
+	std::cin >> hitEnemy;
+	//while ((player->playerHealth <= 0) && (enemyHealth <= 0))
+	while(hitEnemy = Y)
 	{
-		std::cout << "Hit the enemy ? \n Press Y for Yes or N for No. \n";
-		std::cin >> hitEnemy;
-
 		if (hitEnemy == Y)
 		{
-			enemyHealth = enemyHealth - player->playerDamage;
-			std::cout << "Your enemy has now " << enemyHealth << " health points left. \n";
+				enemyHealth = enemyHealth - player->playerDamage;
+				std::cout << "Your enemy has now " << enemyHealth << " health points left. \n";
 
-			if (enemyHealth <= 0)
-			{
-				std::cout << "Congratulations you successfully killed the enemy. \n";
-				break;
-			}
+				if (enemyHealth <= 0)
+				{
+					std::cout << "Congratulations you successfully killed the enemy. \n";
+				}
+				else if (enemyHealth > 0)
+				{
+					std::cout << "It is now the enemy's turn. \n";
+					player->playerHealth = player->playerHealth - enemyDamage;
+					std::cout << "You have now " << player->playerHealth << " health points left. \n";
+				}
 		}
-		else if (enemyHealth > 0)
-		{
-			std::cout << "It is now the enemy's turn. \n";
-			player->playerHealth = player->playerHealth - enemyDamage;
-			std::cout << "You have now " << player->playerHealth << " health points left. \n";
-		}
-		/*else if (hitEnemy == N)
+		else if (hitEnemy == N)
 		{
 			std::cout << "The enemy attacks you first instead. \n";
 			player->playerHealth = player->playerHealth - enemyDamage;
 			std::cout << "You have now " << player->playerHealth << " health points left. \n";
-		}*/
-	
-	}
+		}
 	//si joueur meurt return false
+
 	if (player->playerHealth <= 0)
 	{
 		std::cout << "You were killed by your opponent. \n You lost. \n";
 		return false;
 	}
 	//si enemi meur return true;
+
 	if (enemyHealth <= 0)
 	{
 		std::cout << "You killed your opponent! \n You won! \n";
 		return true;
 	}
+	}
+	
 }
 
 Position Enemy::GetPosition() const

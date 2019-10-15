@@ -14,8 +14,8 @@ void MapMenu(Player player)
 	std::cout << " # \t\t DOWN = s \t\t\t  # \n";
 	std::cout << " # \t\t LEFT = a      \t\t\t  # \n";
 	std::cout << " # \t\t RIGHT = d      \t\t  # \n";
-	std::cout << " # \t\t "<< player.playerHealth <<"      \t\t\t  # \n";
-	std::cout << " # \t\t       \t\t\t\t  # \n";
+	std::cout << " # \t\t INVENTORY = p      \t\t  # \n";
+	std::cout << " # \t\t Player Health : "<< player.playerHealth <<"      \t  # \n";
 	std::cout << " # \t\t       \t\t\t\t  # \n";
 	std::cout << " ################################################## \n";
 
